@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAD User Account</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/header.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/body.css') }}">
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+</head>
+<body>
+
+  <!-- NavBar -->
+    <div class="header">
+        <a href="#" class="logo">Latham.xyz</a>
+        <div class="header-right">
+          <a class="active" href="#home">Create User</a>
+          <a href="#">User Info</a>
+          <a href="#">Disable User</a>
+        </div>
+      </div>
+
+  <!-- End NavBar -->
+
+
+  <!-- Login Details-->
+  <div class="container">
+    <div class="text-formatting login-left">
+      <label for="username">Username - </label>
+      <br>
+      <label for="password">Password - </label>
+      
+    </div>
+    <div class="login-right">
+      <form id="login-credentials" action="/login">
+      <input class="logininput" type="email" id="username" name="username">
+      <br>
+      <input class="logininput" type="password" id="password" name="password">
+
+     
+
+  </div>
+    <div class="center">
+      <button class="submitbutton"type="submit" form="login-credentials"  value="Submit">Submit</button>
+    </div>
+    </form>
+
+</div>
+
+<div>
+
+</div>
+  </div>
+  <div>
+  </div>
+
+
+
+
+</body>
+</html>

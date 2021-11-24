@@ -1,0 +1,80 @@
+.container {
+    height: 200px;
+    position: relative;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+p {
+    font-family: "Lato";
+    padding-left: 20px;
+    float: inherit;
+}
+
+.text-formatting {
+    font-family: "Lato";
+    font-size: 24px;
+}
+
+.login-left {
+    width: 50%;
+    float: left;
+    font-family: "Lato";
+    text-align: right;
+}
+.login-right {
+    margin-left: 50%;
+
+}
+.logininput {
+    border: none;
+    border-bottom: 2px solid red;
+    font-size: 24px;
+}
+.submitbutton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.submitbutton:hover {
+    background-color: red;
+}
+
+
+
+@media screen and (max-width: 600px){
+    .login-left {
+        width: 50%;
+        float: left;
+        font-family: "Lato";
+        text-align: left;
+    }
+    .login-right {
+        float: right;
+    
+    }
+    .center {
+        margin: 0;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+}
