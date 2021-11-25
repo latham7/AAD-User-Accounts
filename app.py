@@ -1,12 +1,8 @@
 from flask import Flask, render_template, request
 from flask.templating import render_template
-import sqlite3
-from datetime import datetime
-from werkzeug.security import generate_password_hash, check_password_hash
+import sys
 
 app = Flask(__name__)
-
-
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
@@ -15,10 +11,14 @@ def index():
 
 
 
-@app.route("/login", methods=['GET', 'POST'])
+
+@app.route("/login")
 def login():
+
     username = request.args.get('username')
-    return(username)
+    password = request.args.get('password')
+    
+    print('username + password')
 
 
 if __name__ == '__main__':
