@@ -1,8 +1,21 @@
+#  _          _   _
+# | |    __ _| |_| |__   __ _ _ __ ___   __  ___   _ ____
+# | |   / _` | __| '_ \ / _` | '_ ` _ \  \ \/ / | | |_  /
+# | |__| (_| | |_| | | | (_| | | | | | |_ >  <| |_| |/ /
+# |_____\__,_|\__|_| |_|\__,_|_| |_| |_(_)_/\_\\__, /___|
+#                                             |___/
+# 
+# Created by Matthew R. Latham | Latham.xyz
+#
+
 from flask import Flask, render_template, request, redirect
 from flask.templating import render_template
 import sys
+import requests
 import http.client
 import json
+
+from werkzeug.datastructures import Authorization
 from APIToken import *
 
 app = Flask(__name__)
@@ -20,26 +33,56 @@ def login():
     
     username = request.args.get('username')
     password = request.args.get('password')
+    email = request.args.get('email')
+
+
+
+    # Postman || Get Auth Key
+
+    url = getAuthTokenURL
+
+    payload = json.dumps({
+      "username": authUsername,
+      "password": authPassword
+    })
+    headers = {
+          'Content-Type': 'application/json',
+  'Cookie': 'connect.sid=s%3AxwyeTd9-2uzWf5FSIEMSgF5RiQ3vdxGx.yT04iEyKHuIz6nC6YaZ2KfhsrfGt5c%2B3owu6Cp8L4UE'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+ #   print(response.text)
+    
+    tokenData = response.text
+    parse_json = json.loads(tokenData)
+    authorization = parse_json['token']
+
+    newAuthor = 'Bearer ' + authorization
+
+    #print(authorization)
+
+
 
 
     # Begin Postman Import || Create User Account
 
-    conn = http.client.HTTPSConnection("support.cammit.co")
+    conn = http.client.HTTPSConnection(baseURL)
     payload = json.dumps({
     "username": username,
     "fullname": username,
     "title": "Integration",
-    "email": "joesmith3435@gmail.com",
+    "email": email,
     "groups": [
-        "6179f6af33a2d75c8ac7405a"
+        "61a80a7c365f365048c1b4da"
     ],
-    "role": "6179f582c526d95beab4d393",
+    "role": "61a80a50bba0dd47e4efabc3",
     "password": password,
     "passwordConfirm": password
     })
     headers = {
     'refreshtoken': refreshtoken,
-    'Authorization': authorization,
+    'Authorization': newAuthor,
     'Content-Type': 'application/json',
     'Cookie': 'connect.sid=s%3AxwyeTd9-2uzWf5FSIEMSgF5RiQ3vdxGx.yT04iEyKHuIz6nC6YaZ2KfhsrfGt5c%2B3owu6Cp8L4UE'
     }
@@ -48,9 +91,6 @@ def login():
     data = res.read()
     print(data.decode("utf-8"))
     # End Postman Config Import
-
-
-    print(refreshtoken)
     
 
     return redirect("http://www.example.com", code=302)

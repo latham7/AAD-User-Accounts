@@ -28,6 +28,8 @@
   <!-- Login Details-->
   <div class="container">
     <div class="text-formatting login-left">
+      <label for="email">E-mail</label>
+      <br>
       <label for="username">Username - </label>
       <br>
       <label for="password">Password - </label>
@@ -35,10 +37,13 @@
     </div>
     <div class="login-right">
       <form id="login-credentials" action="/aaduser" formmethod="POST">
+      <input class="logininput" type="email" id="email" name="email">
+      <br>
       <input class="logininput" type="text" id="username" name="username">
       <br>
       <input class="logininput" type="password" id="password" name="password">
-      <button class="center submitbutton" type="submit" form="login-credentials" value="Submit">Submit 2</button>
+      <br>
+      <button class="submitbutton" type="submit" form="login-credentials" value="Submit">Submit 2</button>
       </form>
     </div>
   </div>
