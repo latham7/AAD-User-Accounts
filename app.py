@@ -38,7 +38,6 @@ def login():
 
 
     # Postman || Get Auth Key
-
     url = getAuthTokenURL
 
     payload = json.dumps({
@@ -50,10 +49,8 @@ def login():
   'Cookie': 'connect.sid=s%3AxwyeTd9-2uzWf5FSIEMSgF5RiQ3vdxGx.yT04iEyKHuIz6nC6YaZ2KfhsrfGt5c%2B3owu6Cp8L4UE'
     }
 
+    # Parse token from API
     response = requests.request("POST", url, headers=headers, data=payload)
-
- #   print(response.text)
-    
     tokenData = response.text
     parse_json = json.loads(tokenData)
     authorization = parse_json['token']
@@ -90,7 +87,7 @@ def login():
     res = conn.getresponse()
     data = res.read()
     print(data.decode("utf-8"))
-    # End Postman Config Import
+    # End Postman Import
     
 
     return redirect("http://www.example.com", code=302)
